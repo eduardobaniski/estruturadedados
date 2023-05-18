@@ -26,6 +26,15 @@ void push(int val)
     topo = newno;
 }
 
+void topoPilha(){
+    if(topo == NULL){
+        printf("\nPilha vazia");
+    }
+    else{
+        printf("\nO elemento no topo da pilha e %d.", topo->data);
+    }
+}
+
 void pop()
 {
     if (topo == NULL)
@@ -36,9 +45,17 @@ void pop()
     else{
         no *anterior = buscaAnterior();
         free(topo);
-        topo = anterior;
-        printf("\nPop sucessful, elemento removido e topo retornou ao elemento anterior.");
-        return;
+        if(anterior == first){
+            first = NULL;
+            topo = NULL;
+            printf("\nPop sucessful, elemento removido e pilha vazia.");
+            return;
+        }
+        else{
+            topo = anterior;
+            printf("\nPop sucessful, elemento removido e topo retornou ao elemento anterior.");
+            return;
+        }
     }
 
 }
