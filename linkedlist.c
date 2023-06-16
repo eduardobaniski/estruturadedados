@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "listadin.h"
+#include "listadin.c"
 
 
 int main(){
