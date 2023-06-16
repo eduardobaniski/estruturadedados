@@ -1,3 +1,6 @@
+#include <stdlib.h>
+#include <stdio.h>
+
 typedef struct {
     void *prox;
     int data;
@@ -7,30 +10,43 @@ no *HEAD = NULL;
 
 
 void inserir(int val){      //Aloca um novo elemento não repetido no final da lista
-    no *new = malloc(sizeof(no));   
-    if(new == NULL){                
+    no *newNo = malloc(sizeof(no));   
+    if(newNo == NULL){                
         return;
     }
-    new->prox = NULL;               
-    new->data = val;
+    newNo->prox = NULL;               
+    newNo->data = val;
     if(HEAD == NULL){               
-        HEAD = new;                 
+        HEAD = newNo;                 
         return;                     
     }
-    else{                           
-        no *busca = HEAD;          
-        while(busca->prox != NULL){
+    else{ 
+        no *busca = HEAD;
+        while(busca != NULL){
             if(busca->data == val){
-                printf("\nValor ja presente na lista.");
+                printf("\nValor ja presente na lista. ");
                 return;
             }
-            busca=busca->prox;  
+            busca=busca->prox;
         }
-        if(busca->data == val){     //tive q repetir esse bloco pq o ultimo elemento dava pau na busca
-            printf("\nValor ja presente na lista.");
+        if (HEAD->data > val) {
+            newNo->prox = HEAD;
+            HEAD = newNo;
             return;
         }
-        busca->prox = new;
+        no *anterior = HEAD;      
+        no *atual = HEAD;
+        while (atual != NULL && val > atual->data) {    //esse insertionsort me complicou, deve estar funcionando
+            if(atual->prox == NULL){
+                atual->prox = newNo;
+                return;
+            }
+            anterior = atual;
+            atual = atual->prox;
+        }
+        anterior->prox = newNo;
+        newNo->prox = atual;
+        
         return;
     }
 }
@@ -103,7 +119,7 @@ void finalizar(){   //Libera toda a memória após a execução do programa
 }
 
 void menu(){
-    printf("LISTA ENCADEADA (LINKED LIST)");
+    printf("\nLISTA ENCADEADA (LINKED LIST)");
     printf("\n1. Adicionar elemento");
     printf("\n2. Remover elemento");
     printf("\n3. Buscar elemento");
