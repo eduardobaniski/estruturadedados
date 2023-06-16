@@ -1,97 +1,44 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "pilhadin.h"
 
-typedef struct no
-{
-    int data;
-    no *prox;
-} no;
-// Iniciando o ponteiro do topo
-no *topo = NULL, *first = NULL;
 
-void push(int val)
-{
-    no *newno = malloc(sizeof(no));
-    if (newno == NULL)
-    {
-        printf("\nNao foi possivel adicionar elemento - memoria cheia.");
-        return;
-    }
-    if(first == NULL){
-        first = newno;
-    }
-    newno->data = val;
-    newno->prox = NULL;
-    topo->prox = newno;
-    topo = newno;
-}
-
-void topoPilha(){
-    if(topo == NULL){
-        printf("\nPilha vazia");
-    }
-    else{
-        printf("\nO elemento no topo da pilha e %d.", topo->data);
-    }
-}
-
-void pop()
-{
-    if (topo == NULL)
-    {
-        printf("\nPilha vazia, nenhum elemento removido.");
-        return;
-    }
-    else{
-        no *anterior = buscaAnterior();
-        free(topo);
-        if(anterior == first){
-            first = NULL;
-            topo = NULL;
-            printf("\nPop sucessful, elemento removido e pilha vazia.");
-            return;
+int main(){
+    int escolha;
+    do{
+        menu();
+        scanf("%d", &escolha);
+        switch(escolha){
+            case 1:{
+                printf("\nDigite o numero a ser inserido: ");
+                int val;
+                scanf("%d", &val);
+                inserir(val);
+                break;
+            }
+            case 2:{
+                printf("\nDigite o numero a ser removido: ");
+                int val;
+                scanf("%d", &val);
+                remover(val);
+                break;
+            }
+            case 3:{
+                printf("\nDigite o numero a ser buscado: ");
+                int val;
+                scanf("%d", &val);
+                busca(val);
+                break;
+            }
+            case 4:{
+                printlista();
+                break;
+            }
+            case 5: {
+                finalizar();
+                break;
+            }
         }
-        else{
-            topo = anterior;
-            printf("\nPop sucessful, elemento removido e topo retornou ao elemento anterior.");
-            return;
-        }
-    }
-
-}
-
-no *buscaAnterior(){
-    no *ptr = first;
-    while(1){
-        if(ptr->prox == topo){
-            return ptr;            
-        }
-        else{
-            ptr = ptr->prox;
-        }
-    }
-}
-
-/*
-        O bloco a seguir é uma busca que retorna o endereço do
-        elemento, se encontrado(otherwise NULL). Não adianta 
-        usar ela aqui, isso pode servir para lista encadeada.
-
-no * busca(int valor){
-    no *ptr = first;
-    while(ptr != NULL){
-        if(ptr->data == valor){
-            return ptr;            
-        }
-        else{
-            ptr = ptr->prox;
-        }
-    }
-    return NULL;    
-}   */
-
-int main()
-{
-
+    } while(escolha != 5);
     return 0;
 }
