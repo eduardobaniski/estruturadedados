@@ -13,7 +13,7 @@ int main(){
                 printf("\nDigite o numero a ser inserido: ");
                 int val;
                 scanf("%d", &val);
-                inserir(val);
+                inserir(val);                
                 break;
             }
             case 2:{

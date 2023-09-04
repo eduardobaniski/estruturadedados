@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-
+//Arquivo de funções de lista dinâmica (Linked List)
 typedef struct {
     void *prox;
     int data;
@@ -32,6 +32,7 @@ void inserir(int val){      //Aloca um novo elemento não repetido no final da l
         if (HEAD->data > val) {
             newNo->prox = HEAD;
             HEAD = newNo;
+            printf("\nElemento adicionado.");
             return;
         }
         no *anterior = HEAD;      
@@ -46,7 +47,7 @@ void inserir(int val){      //Aloca um novo elemento não repetido no final da l
         }
         anterior->prox = newNo;
         newNo->prox = atual;
-        
+        printf("\nElemento adicionado.");
         return;
     }
 }

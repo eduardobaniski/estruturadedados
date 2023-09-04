@@ -1,0 +1,75 @@
+bubble
+
+tempo: 0,00700
+comp: 498759
+trocas: 253384
+
+insertion
+
+tempo: 0,00100
+comp: 999
+trocas: 258949
+
+selection
+
+tempo: 0,00200
+comp: 499500
+trocas: 999
+
+quick
+
+tempo: 0,00200
+comp: 3448
+trocas: 2449
+
+CRESCENTE
+
+bubble
+
+tempo: 0,00000
+comp: 999
+trocas: 0
+
+insertion
+
+tempo: 0,00000
+comp: 999
+trocas: 0
+
+selection
+
+tempo: 0,00500
+comp: 499500
+trocas: 999
+
+quick
+
+tempo: 0,00300
+comp: 999
+trocas: 0
+
+DECRESCENTE
+
+bubble
+
+tempo: 0,00800
+comp: 499500
+trocas: 499500
+
+insertion
+
+tempo: 0,00600
+comp: 999
+trocas: 499500
+
+selection
+
+tempo: 0,00400
+comp: 499500
+trocas: 999
+
+quick
+
+tempo: 0,00100
+comp: 1499
+trocas: 500
